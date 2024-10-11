@@ -1,18 +1,18 @@
-import Horarios
+from Horarios import Horarios
 
 
-class aparatos:
-    lunes = Horarios
-    martes = Horarios
-    miercoles = Horarios
-    jueves = Horarios
-    viernes = Horarios
+class Aparatos:
+    lunes = Horarios()
+    martes = Horarios()
+    miercoles = Horarios()
+    jueves = Horarios()
+    viernes = Horarios()
 
     def __init__(self, tipo, id):
         self.tipo = tipo
         self.id = id
 
-    def clienteReserva(self, cliente, hora, dia):
+    def clientereserva(self, cliente, hora, dia):
         match dia:
             case 1:
                 self.lunes.anyadirCliente(cliente.nombre, hora)
@@ -24,3 +24,16 @@ class aparatos:
                 self.jueves.anyadirCliente(cliente.nombre, hora)
             case 5:
                 self.viernes.anyadirCliente(cliente.nombre, hora)
+
+    def mostrarhorario(self, dia):
+        match dia:
+            case 1:
+                self.lunes.mostrarHorario()
+            case 2:
+                self.martes.mostrarHorario()
+            case 3:
+                self.miercoles.mostrarHorario()
+            case 4:
+                self.jueves.mostrarHorario()
+            case 5:
+                self.viernes.mostrarHorario()

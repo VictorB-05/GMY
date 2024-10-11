@@ -50,7 +50,15 @@ class Horarios:
         48: "Vacio",
     }
 
-def anyadirCliente(self,nombre, sesion):
-    self.horario[sesion] = nombre
+    def anyadirCliente(self,nombre, sesion):
+        self.horario[sesion] = nombre
 
 
+    def mostrarHorario(self):
+        AUX=0
+        for hora in self.horario:
+            if hora%2==0:
+                aux = "00"
+            else:
+                aux= "30"
+            print((int)(hora/2),":",aux,self.horario[hora])
