@@ -28,12 +28,17 @@ class Aparatos:
     def mostrarhorario(self, dia):
         match dia:
             case 1:
+                print(f"Horarios del lunes de la maquina {self.tipo} id {self.id}")
                 self.lunes.mostrarHorario()
             case 2:
+                print(f"Horarios del martes de la maquina {self.tipo} id {self.id}")
                 self.martes.mostrarHorario()
             case 3:
+                print(f"Horarios del miercoles de la maquina {self.tipo} id {self.id}")
                 self.miercoles.mostrarHorario()
             case 4:
+                print(f"Horarios del jueves de la maquina {self.tipo} id {self.id}")
                 self.jueves.mostrarHorario()
             case 5:
+                print(f"Horarios del viernes de la maquina {self.tipo} id {self.id}")
                 self.viernes.mostrarHorario()

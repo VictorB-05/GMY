@@ -55,10 +55,15 @@ class Horarios:
 
 
     def mostrarHorario(self):
-        AUX=0
+
         for hora in self.horario:
+
             if hora%2==0:
                 aux = "00"
             else:
                 aux= "30"
-            print((int)(hora/2),":",aux,self.horario[hora])
+            if hora/2<10:
+                #0,
+                print(f"0{(int)(hora / 2)}:{aux}",self.horario[hora])
+            else:
+                print(f"{(int)(hora / 2)}:{aux}", self.horario[hora])
