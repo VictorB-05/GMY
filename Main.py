@@ -16,23 +16,30 @@ while opcion != 0:
     opcion = int(opcion)
     match opcion:
         case 1:
+            #Introducimos los datos para reservar el aparato
             idAparato = int(input("Introduce el ID del aparato: "))
             idCliente = int(input("Introduce tu ID de cliente: "))
-            sesion = float(input("Introduce la hora de tu sesión (usa decimales, por ejemplo, 14.5 para 14:30): "))
-            dia = int(
-                input(
+            dia = int(input(
                     "Introduce el día de la semana (1 = lunes, 2 = martes, 3 = miércoles, 4 = jueves, 5 = viernes): "))
+            sesion = float(input("Introduce la hora de tu sesión (usa decimales, por ejemplo, 14.5 para 14:30): "))
 
-            # Aseguramos que las conversiones están bien y los índices existen
-            if 1 <= idAparato <= len(aparatos) and 1 <= idCliente <= len(clientes):
-                aparatos[idAparato - 1].clientereserva(clientes[idCliente - 1], sesion * 2, dia)
-                print("Sesion intrpducida correctamente")
+            if ((int)(sesion*2)) == sesion*2:
+                # Aseguramos que las conversiones están bien y los índices existen
+                if 1 <= idAparato <= len(aparatos) and 1 <= idCliente <= len(clientes):
+                    if aparatos[idAparato - 1].clientereserva(clientes[idCliente - 1], sesion * 2, dia):
+                        print("Sesion intrpducida correctamente")
+                    else:
+                        print("Sesion cogido mira el horario y elije otra")
+                else:
+                    print("ID de aparato o cliente fuera de rango")
             else:
-                print("ID de aparato o cliente fuera de rango")
+                print("La hora tiene que ser numero entero o medio")
 
         case 2:
+            #introducimos los datos para ver el horario de un aprato
             idAparato = int(input("Introduce el ID del aparato: "))
-            dia = int(input("Introduce el día de la semana (1 = lunes, 2 = martes, 3 = miércoles, 4 = jueves, 5 = viernes): "))
+            dia = int(input(
+                "Introduce el día de la semana (1 = lunes, 2 = martes, 3 = miércoles, 4 = jueves, 5 = viernes): "))
             if 1 <= idAparato <= len(aparatos):
                 aparatos[idAparato - 1].mostrarhorario(dia)
             else:

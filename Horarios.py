@@ -1,5 +1,9 @@
+from xmlrpc.client import Boolean
+
+
 class Horarios:
     def __init__(self):
+        # dentro del constructor para que no sea statico y sea diferente por cada objeto
         self.horario = {
             1: "Vacio",
             2: "Vacio",
@@ -52,11 +56,15 @@ class Horarios:
         }
 
     def anyadirCliente(self,cliente, sesion):
-        self.horario[sesion] = cliente
+        if self.horario[sesion] == "Vacio":
+            self.horario[sesion] = cliente
+            aux = True
+        else:
+            aux = False
+        return aux
 
 
     def mostrarHorario(self):
-
         for hora in self.horario:
             if self.horario[hora] == "Vacio":
                 auxH = "Vacio"

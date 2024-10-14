@@ -1,3 +1,5 @@
+from xmlrpc.client import Boolean
+
 from Horarios import Horarios
 
 
@@ -6,6 +8,7 @@ class Aparatos:
     def __init__(self, tipo, id):
         self.tipo = tipo
         self.id = id
+        # dentro del constructor para que no sea estatico y sea diferente por cada objeto
         self.lunes = Horarios()
         self.martes = Horarios()
         self.miercoles = Horarios()
@@ -13,17 +16,19 @@ class Aparatos:
         self.viernes = Horarios()
 
     def clientereserva(self, cliente, hora, dia):
+        aux = Boolean
         match dia:
             case 1:
-                self.lunes.anyadirCliente(cliente, hora)
+                aux = self.lunes.anyadirCliente(cliente, hora)
             case 2:
-                self.martes.anyadirCliente(cliente, hora)
+                aux = self.martes.anyadirCliente(cliente, hora)
             case 3:
-                self.miercoles.anyadirCliente(cliente, hora)
+                aux = self.miercoles.anyadirCliente(cliente, hora)
             case 4:
-                self.jueves.anyadirCliente(cliente, hora)
+                aux = self.jueves.anyadirCliente(cliente, hora)
             case 5:
-                self.viernes.anyadirCliente(cliente, hora)
+                aux = self.viernes.anyadirCliente(cliente, hora)
+        return aux
 
     def mostrarhorario(self, dia):
         match dia:

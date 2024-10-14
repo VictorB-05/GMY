@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a853a04-0f79-4b19-aec8-3b81fc38dbd7" name="Changes" comment="Se ha implementado un main en el que se puede cojer una hora de reserva y mirar las reservas además se han mejorado y arreglado varios metodos. Como no hay base de datos se ha añadido un metodo que intorduce unos avlores predefinidos al programa">
+    <list default="true" id="4a853a04-0f79-4b19-aec8-3b81fc38dbd7" name="Changes" comment="Se ha solucionado un error por el cual todos los horarios eran el mismo al no estar puestos en el constructor. Además se añadio la ultima FUNCIONALIDAD el recibo y la lista de mororosos. Para poder visulaizarla hemos iniciaido a algunos clientes como mororos">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Aparatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/Aparatos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Horarios.py" beforeDir="false" afterPath="$PROJECT_DIR$/Horarios.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Iniciar.py" beforeDir="false" afterPath="$PROJECT_DIR$/Iniciar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,12 +113,32 @@
       <option name="project" value="LOCAL" />
       <updated>1728733025310</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Se ha solucionado un error por el cual todos los horarios eran el mismo al no estar puestos en el constructor. Además se añadio la ultima FUNCIONALIDAD el recibo y la lista de mororosos. Para poder visulaizarla hemos iniciaido a algunos clientes como mororos">
+      <option name="closed" value="true" />
+      <created>1728897530317</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728897530317</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Se han terminado de implementar los metodos para poder resevar los aparatos y mostrar las horas de las reservas" />
     <MESSAGE value="Se ha implementado un main en el que se puede cojer una hora de reserva y mirar las reservas además se han mejorado y arreglado varios metodos. Como no hay base de datos se ha añadido un metodo que intorduce unos avlores predefinidos al programa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se ha implementado un main en el que se puede cojer una hora de reserva y mirar las reservas además se han mejorado y arreglado varios metodos. Como no hay base de datos se ha añadido un metodo que intorduce unos avlores predefinidos al programa" />
+    <MESSAGE value="Se ha solucionado un error por el cual todos los horarios eran el mismo al no estar puestos en el constructor. Además se añadio la ultima FUNCIONALIDAD el recibo y la lista de mororosos. Para poder visulaizarla hemos iniciaido a algunos clientes como mororos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se ha solucionado un error por el cual todos los horarios eran el mismo al no estar puestos en el constructor. Además se añadio la ultima FUNCIONALIDAD el recibo y la lista de mororosos. Para poder visulaizarla hemos iniciaido a algunos clientes como mororos" />
   </component>
 </project>
