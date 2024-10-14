@@ -2,28 +2,28 @@ from Horarios import Horarios
 
 
 class Aparatos:
-    lunes = Horarios()
-    martes = Horarios()
-    miercoles = Horarios()
-    jueves = Horarios()
-    viernes = Horarios()
 
     def __init__(self, tipo, id):
         self.tipo = tipo
         self.id = id
+        self.lunes = Horarios()
+        self.martes = Horarios()
+        self.miercoles = Horarios()
+        self.jueves = Horarios()
+        self.viernes = Horarios()
 
     def clientereserva(self, cliente, hora, dia):
         match dia:
             case 1:
-                self.lunes.anyadirCliente(cliente.nombre, hora)
+                self.lunes.anyadirCliente(cliente, hora)
             case 2:
-                self.martes.anyadirCliente(cliente.nombre, hora)
+                self.martes.anyadirCliente(cliente, hora)
             case 3:
-                self.miercoles.anyadirCliente(cliente.nombre, hora)
+                self.miercoles.anyadirCliente(cliente, hora)
             case 4:
-                self.jueves.anyadirCliente(cliente.nombre, hora)
+                self.jueves.anyadirCliente(cliente, hora)
             case 5:
-                self.viernes.anyadirCliente(cliente.nombre, hora)
+                self.viernes.anyadirCliente(cliente, hora)
 
     def mostrarhorario(self, dia):
         match dia:

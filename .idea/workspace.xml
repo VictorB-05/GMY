@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4a853a04-0f79-4b19-aec8-3b81fc38dbd7" name="Changes" comment="Se ha implementado un main en el que se puede cojer una hora de reserva y mirar las reservas además se han mejorado y arreglado varios metodos. Como no hay base de datos se ha añadido un metodo que intorduce unos avlores predefinidos al programa">
+      <change beforePath="$PROJECT_DIR$/Aparatos.py" beforeDir="false" afterPath="$PROJECT_DIR$/Aparatos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Horarios.py" beforeDir="false" afterPath="$PROJECT_DIR$/Horarios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Iniciar.py" beforeDir="false" afterPath="$PROJECT_DIR$/Iniciar.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;VictorB-05&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/VictorB-05/GMY&quot;,
+    &quot;accountId&quot;: &quot;4900938e-266a-4b69-9463-fc4ba96edb1d&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2nHyM6DdjBZsCcq3qV4bNnbH5pl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Aparatos.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Horarios.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victor/Documents/repos/GMY/Main.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="GMY" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (GMY)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a853a04-0f79-4b19-aec8-3b81fc38dbd7" name="Changes" comment="" />
+      <created>1728644244611</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728644244611</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Se han terminado de implementar los metodos para poder resevar los aparatos y mostrar las horas de las reservas">
+      <option name="closed" value="true" />
+      <created>1728647045879</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728647045880</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Se ha implementado un main en el que se puede cojer una hora de reserva y mirar las reservas además se han mejorado y arreglado varios metodos. Como no hay base de datos se ha añadido un metodo que intorduce unos avlores predefinidos al programa">
+      <option name="closed" value="true" />
+      <created>1728733025310</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728733025310</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Se han terminado de implementar los metodos para poder resevar los aparatos y mostrar las horas de las reservas" />
+    <MESSAGE value="Se ha implementado un main en el que se puede cojer una hora de reserva y mirar las reservas además se han mejorado y arreglado varios metodos. Como no hay base de datos se ha añadido un metodo que intorduce unos avlores predefinidos al programa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se ha implementado un main en el que se puede cojer una hora de reserva y mirar las reservas además se han mejorado y arreglado varios metodos. Como no hay base de datos se ha añadido un metodo que intorduce unos avlores predefinidos al programa" />
+  </component>
+</project>

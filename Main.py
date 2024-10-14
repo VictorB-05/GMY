@@ -7,9 +7,10 @@ opcion = -1
 while opcion != 0:
     # Solicitamos la opción del usuario
     opcion = input("Bienvenidos al gym gymforthemoment, esta es la aplicación de gestión, elige una opción:\n"
-                   "1. Reservar aparato\n"
-                   "2. Mirar horarios de los aparatos\n"
-                   "0. Salir\n")
+                    "1. Reservar aparato\n"
+                    "2. Mirar horarios de los aparatos\n"
+                    "3. Mirar recibo y quien ha pagado\n"
+                    "0. Salir\n")
 
     # Convertimos la opción a entero
     opcion = int(opcion)
@@ -36,6 +37,10 @@ while opcion != 0:
                 aparatos[idAparato - 1].mostrarhorario(dia)
             else:
                 print("ID de aparato fuera de rango")
+
+        case 3:
+            for cliente in clientes:
+                print(cliente.pagar())
 
         case 0:
             print("Saliendo...")
