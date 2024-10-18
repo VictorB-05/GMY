@@ -1,6 +1,5 @@
 from xmlrpc.client import Boolean
 
-
 class Horarios:
     def __init__(self):
         # dentro del constructor para que no sea statico y sea diferente por cada objeto
