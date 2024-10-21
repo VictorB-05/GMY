@@ -1,6 +1,5 @@
 from datetime import time
-
-import Conexion
+from Conexion import Conexion
 
 Usuario = ""
 def menu():
@@ -13,20 +12,22 @@ def menu():
         match opcion:
             case 1:
                 # Introducimos los datos para reservar el aparato
-                idAparato = meterIdAparato()
                 idCliente = meterIdCliente()
+                idAparato = meterIdAparato()
                 dia = int(input(
                     "Introduce el día de la semana (1 = lunes, 2 = martes, 3 = miércoles, 4 = jueves, 5 = viernes): "))
                 if (dia<1) or (dia>5):
-                    raise Exception("Dia incorrecto");
+                    raise Exception("Dia incorrecto")
 
-                sesionh = int(input("Introduce la hora de tu sesión"))
+                sesionh = int(input("Introduce la hora de tu sesión si quieres media hora pon un 0,5"))
+                sesionm = (sesionh*10)%10
 
-                if(int(input("Si quieres a empunto pon 0 si queires a y media pon 1"))==1):
+                if sesionm == 0.5 :
                     hora = time(sesionh, 30)
-                else:
+                elif sesionm == 0 :
                     hora= time(sesionh,0)
-
+                else:
+                    print("Hora incorrecta o X,0 o X,5")
 
 
             case 2:
@@ -51,23 +52,38 @@ def comprobarExstencia(dato, nombreDato,tabla):
 
 def meterIdAparato():
     clave = input(f"Introduce la ID del aparato: ")
-    sentencia = f"Select id from aparato where id = {clave}"
-    respuesta = Conexion.Conexion(sentencia)
+    sentencia = "SELECT id FROM aparato WHERE id = %s"
+
+    conexion = Conexion()
+    cursor = conexion.getCursor()
+
+    cursor.execute(sentencia, (clave,))
+
+    # Ejecuta la consulta pasando el valor del DNI como parámetro
+    respuesta = cursor.fetchone()
+    conexion.close()
     if not respuesta:
         print("Id no existente")
         return meterIdAparato()
     return clave
 
 def meterIdCliente():
-    clave = input(f"Introduce tu DNI: ")
-    sentencia = f"Select DNI from usuario where DNI = '{clave}'"
-    respuesta = Conexion.Conexion(sentencia)
-    print(respuesta.fetchall())
-    if not respuesta:
+    dni = input("Introduce tu DNI: ")
+    sentencia = "SELECT dni FROM usuario WHERE dni = %s"
+
+    conexion = Conexion()
+    cursor = conexion.getCursor()
+
+    # Ejecuta la consulta pasando el valor del DNI como parámetro
+    cursor.execute(sentencia, (dni,))
+
+    respuesta = cursor.fetchall()
+    conexion.close()
+    if not respuesta :
         print("DNI no existente")
         return meterIdCliente()
-    return clave
+    return respuesta
 
 def comprobarSesion(DNI, Idaparato, hora, dia):
-    sentencia = f"Select * from reservas where DNI = {DNI} AND where "
+    sentencia = f"Select * from reservas where dni = {DNI} AND where "
     respuesta = Conexion.Conexion(sentencia)
