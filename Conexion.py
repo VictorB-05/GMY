@@ -22,3 +22,5 @@ class Conexion:
         self.cursor.close()
         self.conexion.close()
 
+    def commit(self):
+        self.conexion.commit()
