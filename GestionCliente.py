@@ -1,6 +1,4 @@
-from contextlib import nullcontext
 from datetime import time
-
 from Conexion import Conexion
 
 Usuario = ""
@@ -8,11 +6,12 @@ def menu():
     opcion = -1
     while opcion != 0:
         opcion = int(input(f"Bienvenido al programa del cliente {Usuario}\n"
-              "1. Apuntarse a maquina\n"
-              "2. Ver horarios\n"
-              "3. Ver tus reservas\n"
-              "4. Cancelar tus reservas\n"
-              "5. Pagar\n" ))
+                "1. Apuntarse a maquina\n"
+                "2. Ver horarios\n"
+                "3. Ver tus reservas\n"
+                "4. Cancelar tus reservas\n"
+                "5. Pagar\n" 
+                "0. Salir\n"))
         match opcion:
             case 1:
                 # Introducimos los datos para reservar el aparato
@@ -135,7 +134,7 @@ def menu():
                         cursor.execute(sentencia, (dni,))
                         conexion.commit()
                         conexion.close()
-
+    return None
 
 
 def registro():
