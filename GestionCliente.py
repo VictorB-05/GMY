@@ -59,6 +59,38 @@ def menu():
                     else:
                         usuario = reserva[1]
                     print(f"Hora: {hora} - Usuario: {usuario}")
+
+            case 3:
+                dni = meterIdCliente()
+                resultado = reservasUsuario(dni)
+                print(f"Estas son tus reservas:")
+                for reserva in resultado:
+                    dia = reserva[0]
+                    hora = reserva[1]
+                    aparato = reserva[2]
+                    print(f"Día: {dia} - Hora: {hora} - Aparato: {aparato}")
+
+            case 4:
+                dni = meterIdCliente()
+                resultado = reservasUsuario(dni)
+                for i in range(0, len(resultado)):
+                    dia = resultado[i][0]
+                    hora = resultado[i][1]
+                    aparato = resultado[i][2]
+                    print(f"{i+1}. Día: {dia} - Hora: {hora} - Aparato: {aparato}")
+                opcion = int(input("Numero de la sesión a eliminar"))-1
+                if opcion<len(resultado) and opcion>0:
+                    sentencia = "DELETE FROM reservas WHERE id = %s"
+
+                    conexion = Conexion()
+                    cursor = conexion.getCursor()
+
+                    # Ejecuta la consulta pasando el valor del DNI como parámetro
+                    cursor.execute(sentencia, (resultado[opcion][3],))
+                    conexion.commit()
+                    conexion.close()
+                else:
+                    print("Error reserva no existente en la lista")
             case 5:
                 dni = meterIdCliente()
                 sentencia = "SELECT pago,moroso FROM usuario WHERE dni = %s"
@@ -106,8 +138,6 @@ def menu():
 
 
 
-
-    return None
 def registro():
     usuario = input("Introduce el tu id: ")
     sentencia = "Select * from usuarios where id = ",usuario
@@ -179,3 +209,14 @@ def comprobarSesion(dni, Idaparato,dia , hora):
         return "Sesión iniciada"
     else:
         return "Aparato ocupado o el cliente ya tiene una reserva en ese horario"
+
+def reservasUsuario(dni):
+    sentencia = ("SELECT dia, hora, aparato.nombre, reservas.id FROM reservas "
+                 "INNER JOIN aparato ON reservas.id_aparato = aparato.id "
+                 "WHERE dni = %s")
+    conexion = Conexion()
+    cursor = conexion.getCursor()
+
+    cursor.execute(sentencia, (dni,))
+
+    return cursor.fetchall()
