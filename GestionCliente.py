@@ -1,11 +1,10 @@
 from datetime import time
 from Conexion import Conexion
 
-Usuario = ""
-def menu():
+def menu(dni,nombre,apellidos,pago,moroso):
     opcion = -1
     while opcion != 0:
-        opcion = int(input(f"Bienvenido al programa del cliente {Usuario}\n"
+        opcion = int(input(f"Bienvenido al programa del cliente {nombre} {apellidos}\n"
                 "1. Apuntarse a maquina\n"
                 "2. Ver horarios\n"
                 "3. Ver tus reservas\n"
@@ -15,7 +14,6 @@ def menu():
         match opcion:
             case 1:
                 # Introducimos los datos para reservar el aparato
-                idCliente = meterIdCliente()
                 idAparato = meterIdAparato()
                 dia = int(input(
                     "Introduce el día de la semana (1 = lunes, 2 = martes, 3 = miércoles, 4 = jueves, 5 = viernes): "))
@@ -23,15 +21,13 @@ def menu():
                     raise Exception("Dia incorrecto")
 
                 sesionh = float(input("Introduce la hora de tu sesión si quieres media hora pon un 0.5"))
-                sesionm = (sesionh*10)%10
-
                 # Verificamos si la hora es redonda (X.0) o tiene media hora (X.5)
                 if sesionh.is_integer():
                     hora = time(int(sesionh), 0)  # Sesión redonda (X.0)
-                    print(comprobarSesion(idCliente, idAparato, dia, hora.isoformat()))
+                    print(comprobarSesion(dni, idAparato, dia, hora.isoformat()))
                 elif sesionh == int(sesionh) + 0.5:
                     hora = time(int(sesionh), 30)  # Sesión con media hora (X.5)
-                    print(comprobarSesion(idCliente, idAparato, dia, hora.isoformat()))
+                    print(comprobarSesion(dni, idAparato, dia, hora.isoformat()))
                 else:
                     print("Hora incorrecta, debe ser X.0 o X.5")
 
@@ -54,13 +50,12 @@ def menu():
                 for reserva in resultado:
                     hora = reserva[0]
                     if(reserva[1] == ""):
-                        usuario == "Vacio"
+                        usuarioAux == "Vacio"
                     else:
-                        usuario = reserva[1]
-                    print(f"Hora: {hora} - Usuario: {usuario}")
+                        usuarioAux = reserva[1]
+                    print(f"Hora: {hora} - Usuario: {usuarioAux}")
 
             case 3:
-                dni = meterIdCliente()
                 resultado = reservasUsuario(dni)
                 print(f"Estas son tus reservas:")
                 for reserva in resultado:
@@ -70,7 +65,6 @@ def menu():
                     print(f"Día: {dia} - Hora: {hora} - Aparato: {aparato}")
 
             case 4:
-                dni = meterIdCliente()
                 resultado = reservasUsuario(dni)
                 for i in range(0, len(resultado)):
                     dia = resultado[i][0]
@@ -78,7 +72,7 @@ def menu():
                     aparato = resultado[i][2]
                     print(f"{i+1}. Día: {dia} - Hora: {hora} - Aparato: {aparato}")
                 opcion = int(input("Numero de la sesión a eliminar"))-1
-                if opcion<len(resultado) and opcion>0:
+                if len(resultado) > opcion > 0:
                     sentencia = "DELETE FROM reservas WHERE id = %s"
 
                     conexion = Conexion()
@@ -91,19 +85,6 @@ def menu():
                 else:
                     print("Error reserva no existente en la lista")
             case 5:
-                dni = meterIdCliente()
-                sentencia = "SELECT pago,moroso FROM usuario WHERE dni = %s"
-
-                conexion = Conexion()
-                cursor = conexion.getCursor()
-
-                # Ejecuta la consulta pasando el valor del DNI como parámetro
-                cursor.execute(sentencia, (dni,))
-
-                resultado = cursor.fetchone()
-                pago = resultado[0]
-                moroso = resultado[1]
-                conexion.close()
                 print(pago)
                 if pago:
                     print("Has pagado")
@@ -111,7 +92,6 @@ def menu():
                     print("No has pagado meses atrasados, pagar")
                     opcion = int(input("1. Pagar\n" "2. Salir"))
                     if opcion == 1:
-                        print("sas")
                         sentencia = "UPDATE usuario SET pago=1, moroso=0  WHERE dni = %s"
 
                         conexion = Conexion()
@@ -121,6 +101,7 @@ def menu():
                         cursor.execute(sentencia, (dni,))
                         conexion.commit()
                         conexion.close()
+                        pago = True
                 else :
                     print("No has pagado aun el mes")
                     opcion = input("1. Pagar\n" "2. Salir")
@@ -134,14 +115,9 @@ def menu():
                         cursor.execute(sentencia, (dni,))
                         conexion.commit()
                         conexion.close()
+                        pago = True
+                        moroso = False
     return None
-
-
-def registro():
-    usuario = input("Introduce el tu id: ")
-    sentencia = "Select * from usuarios where id = ",usuario
-    base = Conexion.Conexion(sentencia)
-    print(base.fetchone())
 
 def meterIdAparato():
     clave = input(f"Introduce la ID del aparato: ")
@@ -159,23 +135,6 @@ def meterIdAparato():
         print("Id no existente")
         return meterIdAparato()
     return clave
-
-def meterIdCliente():
-    dni = input("Introduce tu DNI: ")
-    sentencia = "SELECT dni FROM usuario WHERE dni = %s"
-
-    conexion = Conexion()
-    cursor = conexion.getCursor()
-
-    # Ejecuta la consulta pasando el valor del DNI como parámetro
-    cursor.execute(sentencia, (dni,))
-
-    respuesta = cursor.fetchall()
-    conexion.close()
-    if not respuesta :
-        print("DNI no existente")
-        return meterIdCliente()
-    return dni
 
 def comprobarSesion(dni, Idaparato,dia , hora):
     print(hora,dia,Idaparato,dni)
