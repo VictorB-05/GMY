@@ -1,10 +1,9 @@
 from Conexion import Conexion
 
-Usuario = ""
 def menu(dni,nombre,apellidos):
     opcion = -1
     while opcion != 0:
-        opcion = int(input(f"Bienvenido al programa del admin {Usuario}\n"
+        opcion = int(input(f"Bienvenido al programa del admin {nombre} {apellidos}\n"
                 "1. Hacer recibo de pagos\n"
                 "2. Morosos\n"
                 "3. Añadir maquina\n"
@@ -28,10 +27,11 @@ def menu(dni,nombre,apellidos):
                     dni = cliente[0]
                     pago = cliente[1]
                     moroso = cliente[2]
-                    print(dni)
                     if pago:
+                        print(f"El usuario {dni} ha pagado este mes")
                         sentencia = "UPDATE usuario SET pago=0, moroso=0  WHERE dni = %s"
                     elif not moroso:
+                        print(f"El usuario {dni} no pago este mes")
                         sentencia = "UPDATE usuario SET pago=0, moroso=1  WHERE dni = %s"
                     else:
                         print(f"El usuario {dni} lleva varios meses sin pagar")

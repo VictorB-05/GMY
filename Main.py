@@ -6,7 +6,7 @@ from Iniciar import iniciar
 
 def meterIdCliente():
     dni = input("Introduce tu DNI: ")
-    sentencia = "SELECT dni FROM usuario WHERE dni = %s"
+    sentencia = "SELECT * FROM usuario WHERE dni = %s"
 
     conexion = Conexion()
     cursor = conexion.getCursor()
@@ -14,23 +14,25 @@ def meterIdCliente():
     # Ejecuta la consulta pasando el valor del DNI como parámetro
     cursor.execute(sentencia, (dni,))
 
-    respuesta = cursor.fetchall()
+    respuesta = cursor.fetchone()
     conexion.close()
     if not respuesta :
         print("DNI no existente")
-        return meterIdCliente()
-    return dni
+        opcion = input("Pulsa 1 para seguir cualquier otro para salir \t")
+        if opcion != "1":
+            return meterIdCliente()
+        else:
+            return (False,)
+    else:
+        dni = respuesta[0]
+        nombre = respuesta[1]
+        apellido = respuesta[2]
+        pago = respuesta[3]
+        moroso = respuesta[4]
+        privilegio = respuesta[5]
+        return True,dni,nombre,apellido,pago,moroso,privilegio
 
-def registro():
-    dni = input("Introduce el tu dni: ")
-    sentencia = "Select * from usuarios where id = %s"
-    base = Conexion()
-    cursor = base.getCursor()
-    cursor.execute(sentencia, (dni,))
-    usuarioDatos = cursor.fetchone()
-    return usuarioDatos
-
-# Inicializamos los aparatos y clientes
+# admin 39114963J cliente 123456789A
 aparatos, clientes = iniciar()
 
 opcion = -1
@@ -41,11 +43,12 @@ while opcion != 0:
                    "0. Salir\n"))
     match opcion:
         case 1:
-            datos = registro()
-            if(datos[5]):
-                GestionAdmin.menu(datos[0],datos[1],datos[2])
-            else:
-                GestionCliente.menu(datos[0],datos[1],datos[2],datos[3],datos[4])
+            datos = meterIdCliente()
+            if datos[0]:
+                if datos[len(datos)-1]:
+                    GestionAdmin.menu(datos[1], datos[2], datos[3])
+                else:
+                    GestionCliente.menu(datos[1], datos[2], datos[3], datos[4], datos[5])
         case 0:
             print("Saliendo...")
             

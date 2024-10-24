@@ -21,12 +21,12 @@ def menu(dni,nombre,apellidos,pago,moroso):
                     raise Exception("Dia incorrecto")
 
                 sesionh = float(input("Introduce la hora de tu sesión si quieres media hora pon un 0.5"))
-                # Verificamos si la hora es redonda (X.0) o tiene media hora (X.5)
+                # Verificamos si la hora
                 if sesionh.is_integer():
-                    hora = time(int(sesionh), 0)  # Sesión redonda (X.0)
+                    hora = time(int(sesionh), 0)  # Sesión a empuento
                     print(comprobarSesion(dni, idAparato, dia, hora.isoformat()))
                 elif sesionh == int(sesionh) + 0.5:
-                    hora = time(int(sesionh), 30)  # Sesión con media hora (X.5)
+                    hora = time(int(sesionh), 30)  # Sesión a y media
                     print(comprobarSesion(dni, idAparato, dia, hora.isoformat()))
                 else:
                     print("Hora incorrecta, debe ser X.0 o X.5")
@@ -85,7 +85,6 @@ def menu(dni,nombre,apellidos,pago,moroso):
                 else:
                     print("Error reserva no existente en la lista")
             case 5:
-                print(pago)
                 if pago:
                     print("Has pagado")
                 elif moroso:
@@ -137,7 +136,6 @@ def meterIdAparato():
     return clave
 
 def comprobarSesion(dni, Idaparato,dia , hora):
-    print(hora,dia,Idaparato,dni)
     sentencia = "SELECT id FROM reservas WHERE id_aparato = %s AND dia = %s AND hora = %s"
     conexion = Conexion()
     cursor = conexion.getCursor()
@@ -162,7 +160,7 @@ def comprobarSesion(dni, Idaparato,dia , hora):
         conexion = Conexion()
         cursor = conexion.getCursor()
         cursor.execute(sentencia_insertar, (dni, Idaparato, dia, hora))
-        conexion.commit()#para introducir la sentencia hay que hacer un commit()
+        conexion.commit()
         conexion.close()
         return "Sesión iniciada"
     else:
